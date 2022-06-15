@@ -10,6 +10,19 @@
 # from tensorflow.keras.applications.densenet import preprocess_input
 # from sklearn.metrics import accuracy_score
 
+dataSet = pd.read_csv(".\data_diagnosis.csv")
+dataSet.drop(["id","Unnamed: 32"],axis=1,inplace=True)
+
+dataSet.diagnosis = [1 if each == "M" else 0 for each in dataSet.diagnosis]
+y=dataSet.diagnosis.values
+
+data = pd.read_csv("Mall_Customers.csv", sep=",")
+X = data.iloc[:,2:5]
+y = data.iloc[:, 1]
+data.Genre = [1 if each == 'Male' else 0 for each in data.Genre]
+y = data.Genre.values
+
+
 #%% read data
 # (x_train_orig, y_train_orig), (x_test, y_test) = cifar10.load_data()
 
